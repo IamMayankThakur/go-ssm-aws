@@ -21,11 +21,11 @@ go get -u github.com/IamMayankThakur/go-ssm-aws
     // If the following parameters are present in SSM:
     // /path/to/key  -> with value "value" 
 
-    import "github.com/IamMayankThakur/go-ssm-aws"
+    import ssm "github.com/IamMayankThakur/go-ssm-aws"
 
     cfg := ssm.Config {
         Enabled: true
-        SecretsPath: "/my-service/dev"
+        SecretsPath: "/path/to"
         Region: "us-east-1"
     }
     ssmClient, err := ssm.New(&cfg)
@@ -33,6 +33,6 @@ go get -u github.com/IamMayankThakur/go-ssm-aws
         return err
     }
     // And getting a specific value
-    value, err := ssmClient.GetValueByName("param-1", true)
+    value, err := ssmClient.GetValueByName("key", true)
     // value should be "value"
 ```
